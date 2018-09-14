@@ -22,12 +22,20 @@ public class HomePage {
     @FindBy(xpath = "//input[@data-role='login_password_field']")
     private WebElement passwordInput;
 
-    public HomePage signIn(String login, String password){
+    public HomePage clickSignInButton(){
         signInButton.click();
+        return this;
+    }
+    public HomePage setLogin(String login){
         loginInput.sendKeys(login);
-        submitButton.submit();
+        return this;
+    }
+    public HomePage setPassword(String password){
         passwordInput.sendKeys(password);
-//        submitButton.submit();
+        return this;
+    }
+    public HomePage clickSubmitButton(){
+        submitButton.click();
         return this;
     }
 }
