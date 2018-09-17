@@ -6,10 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage {
-    private WebDriver driver;
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
         PageFactory.initElements(driver,this);
     }
 
@@ -69,9 +67,6 @@ public class HomePage {
     /**
      * @return    the username from (@code userIcon) WebElement
      */
-    public String getUserIconInnerText(){
-        return userIcon.getAttribute("innerHTML");
-    }
 
     public WebElement getUserIcon(){
         return userIcon;

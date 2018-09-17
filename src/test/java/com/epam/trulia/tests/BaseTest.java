@@ -2,7 +2,6 @@ package com.epam.trulia.tests;
 
 import com.epam.trulia.driverManager.DriverManager;
 import com.epam.trulia.driverManager.DriverType;
-import com.epam.trulia.pages.HomePage;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -15,7 +14,6 @@ import static com.epam.trulia.driverManager.DriverManager.getDriverInstance;
 
 public class BaseTest {
     protected WebDriver driver;
-    protected HomePage homePage;
 
     private final String TESTED_RESOURCE = "https://www.trulia.com/";
     private final long WAITING_TIME = 10;
@@ -31,7 +29,6 @@ public class BaseTest {
     protected void setUp() {
         startBrowser();
         driver.get(TESTED_RESOURCE);
-        homePage = new HomePage(driver);
     }
 
     /**

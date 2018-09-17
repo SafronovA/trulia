@@ -10,7 +10,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SignIn extends BaseTest{
-    private SignInStep signInStep = new SignInStep(homePage);
+    private User user;
+    private SignInStep signInStep;
 
     /**
      * Performs authorization on the tested resource
@@ -18,11 +19,11 @@ public class SignIn extends BaseTest{
      */
     @Test
     public void signInTest(){
+        user = new User();
+        signInStep = new SignInStep(driver);
+        signInStep.signIn(user.getLogin(), user.getPassword());
 
-        signInStep.signIn(User.getLogin(), User.getPassword());
-
-        new WebDriverWait(driver,10).until(ExpectedConditions.elementToBeClickable(homePage.getUserIcon()));
-        Assert.assertEquals(homePage.getUserIconInnerText(), User.getName(), "signIn test passed");
+        Assert.assertEquals(signInStep.getUserIconInnerText(), user.getName(), "signIn test passed");
     }
 
 }

@@ -1,16 +1,13 @@
 package com.epam.trulia.steps;
 
 import com.epam.trulia.pages.HomePage;
+import org.openqa.selenium.WebDriver;
 
 public class SignInStep {
     private HomePage homePage;
 
-//    public SignInStep(WebDriver driver) {
-//        homePage = new HomePage(driver);
-//    }
-
-    public SignInStep(HomePage homePage) {
-        this.homePage = homePage;
+    public SignInStep(WebDriver driver) {
+        homePage = new HomePage(driver);
     }
 
     /**
@@ -20,12 +17,16 @@ public class SignInStep {
      * @param  password user's password
      * @return    this HomePage with authorized user
      */
-    public HomePage signIn(String login, String password){
+    public void signIn(String login, String password){
         homePage.clickSignInButton();
         homePage.setLogin(login);
         homePage.clickSubmitButton();
         homePage.setPassword(password);
         homePage.clickSubmitButton();
-        return homePage;
+//        return homePage;
+    }
+
+    public String getUserIconInnerText(){
+       return homePage.getUserIcon().getAttribute("innerHTML");
     }
 }
