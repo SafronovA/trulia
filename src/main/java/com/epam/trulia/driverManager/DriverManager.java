@@ -34,6 +34,11 @@ public class DriverManager {
         } return driver;
     }
 
+    /**
+     * Initializes a specific type of driver, depending on the argument passed.
+     *
+     * @param driverType type of driver to be initialized
+     */
     private static void setDriver(DriverType driverType){
         switch (driverType){
             case Chrome:
