@@ -1,5 +1,6 @@
 package com.epam.trulia.pages;
 
+import com.epam.trulia.user.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,6 +22,8 @@ public class HomePage {
     private WebElement loginInput;
     @FindBy(xpath = "//input[@data-role='login_password_field']")
     private WebElement passwordInput;
+    @FindBy(xpath = "//span[@class=\'typeTruncate nakedEmail menu-personalized__userEmail___RajK\']")
+    private WebElement userIcon;
 
     public HomePage clickSignInButton(){
         signInButton.click();
@@ -37,5 +40,10 @@ public class HomePage {
     public HomePage clickSubmitButton(){
         submitButton.click();
         return this;
+    }
+
+    public boolean userIsAutorized(){
+        String userName = userIcon.getAttribute("innerHTML");
+        return User.getName().equals(userName);
     }
 }

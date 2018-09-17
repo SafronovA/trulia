@@ -1,14 +1,8 @@
 package com.epam.trulia.driverManager;
 
-import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class DriverManager {
     private static DriverManager driverInstance;
@@ -16,12 +10,24 @@ public class DriverManager {
 
     private DriverManager(){}
 
+    /**
+     * Returns an DriverManager instance, if and only if the DriverManager instance is not {@code null}.
+     * @return      DriverManager instance
+     */
     public static DriverManager getDriverInstance(){
         if (driverInstance == null){
             driverInstance = new DriverManager();
         } return driverInstance;
     }
 
+    /**
+     * Returns an WebDriver object, if and only if the WebDriver object is not {@code null}.
+     * If WebDriver object is not {@code null}, setDriver method is called and
+     * an DriverType object is passed to it. DriverType determines the type of the driver to be returned.
+     *
+     * @param  driverType  type of driver that is required for use
+     * @return             WebDriver object
+     */
     public static WebDriver getDriver(DriverType driverType){
         if (driver == null){
             setDriver(driverType);
