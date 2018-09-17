@@ -25,23 +25,52 @@ public class HomePage {
     @FindBy(xpath = "//span[@class=\'typeTruncate nakedEmail menu-personalized__userEmail___RajK\']")
     private WebElement userIcon;
 
+    /**
+     * Clicks signIn button.
+     *
+     * @return    this HomePage
+     */
     public HomePage clickSignInButton(){
         signInButton.click();
         return this;
     }
+    /**
+     * Enter argument in login input field.
+     *
+     * @param  login user's login
+     * @return    this HomePage
+     */
     public HomePage setLogin(String login){
         loginInput.sendKeys(login);
         return this;
     }
+    /**
+     * Enter argument in password input field.
+     *
+     * @param  password user's password
+     * @return    this HomePage
+     */
     public HomePage setPassword(String password){
         passwordInput.sendKeys(password);
         return this;
     }
+    /**
+     * Clicks submit button.
+     *
+     * @return    this HomePage
+     */
     public HomePage clickSubmitButton(){
         submitButton.click();
         return this;
     }
 
+    /**
+     * Checks whether the user is authorized.
+     *
+     * @return    {@code true} if current {@code userName} represents the same
+     *            sequence of characters as the expected user's name {@code User.getName},
+     *            {@code false} otherwise
+     */
     public boolean userIsAutorized(){
         String userName = userIcon.getAttribute("innerHTML");
         return User.getName().equals(userName);

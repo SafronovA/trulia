@@ -23,6 +23,11 @@ public class BaseTest {
     private final int WIDTH = 1650;
     private final int HEIGHT = 700;
 
+    /**
+     * Causes startBrowser method.
+     * Enters the tested resource.
+     * Initializes HomePage elements.
+     */
     @BeforeClass(alwaysRun = true)
     protected void setUp() {
         startBrowser();
@@ -30,23 +35,34 @@ public class BaseTest {
         homePage = PageFactory.initElements(driver, HomePage.class);
     }
 
-    @AfterClass(enabled = false)
-    protected void backOnMainPage() {
-        driver.navigate().to(TESTED_RESOURCE);
-    }
-
-    @AfterTest(enabled = false)
-    protected void tearDown() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-
+    /**
+     * Gets the required WebDriver type.
+     * Sets required implicitlyWait.
+     * Sets the required size of the browser window.
+     */
     private void startBrowser() {
         getDriverInstance();
         driver = DriverManager.getDriver(DriverType.Firefox);
         driver.manage().timeouts().implicitlyWait(IMPLICITY_WAIT, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(WIDTH, HEIGHT));
+    }
+
+    /**
+     * Returns to the HomePage.
+     */
+    @AfterClass(enabled = false)
+    protected void backOnHomePage() {
+        driver.navigate().to(TESTED_RESOURCE);
+    }
+
+    /**
+     * Destroys the WebDriver
+     */
+    @AfterTest(enabled = false)
+    protected void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
 }
