@@ -41,11 +41,11 @@ public class DriverManager {
      */
     private static void setDriver(DriverType driverType){
         switch (driverType){
-            case Chrome:
+            case CHROME:
                 System.setProperty("webdriver.chrome.driver", "C:\\Users\\Aliaksei_Safronau\\SeleniumDrivers\\chromedriver.exe");
                 driver = new ChromeDriver();
 
-            case Firefox:
+            case FIREFOX:
                 System.setProperty("webdriver.gecko.driver", "C:\\Users\\Aliaksei_Safronau\\SeleniumDrivers\\geckodriver.exe");
                 driver = new FirefoxDriver();
         }

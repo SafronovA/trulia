@@ -1,6 +1,5 @@
 package com.epam.trulia.pages;
 
-import com.epam.trulia.user.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,8 +9,8 @@ public class HomePage {
     private WebDriver driver;
 
     public HomePage(WebDriver driver) {
-        PageFactory.initElements(driver,this);
         this.driver = driver;
+        PageFactory.initElements(driver,this);
     }
 
     @FindBy(xpath = "//button[@class='baz btn btnSml btnDefault signinButton menu-personalized__signinButton___1CxD']")
@@ -34,6 +33,7 @@ public class HomePage {
         signInButton.click();
         return this;
     }
+
     /**
      * Enter argument in login input field.
      *
@@ -44,6 +44,7 @@ public class HomePage {
         loginInput.sendKeys(login);
         return this;
     }
+
     /**
      * Enter argument in password input field.
      *
@@ -54,6 +55,7 @@ public class HomePage {
         passwordInput.sendKeys(password);
         return this;
     }
+
     /**
      * Clicks submit button.
      *
@@ -65,14 +67,13 @@ public class HomePage {
     }
 
     /**
-     * Checks whether the user is authorized.
-     *
-     * @return    {@code true} if current {@code userName} represents the same
-     *            sequence of characters as the expected user's name {@code User.getName},
-     *            {@code false} otherwise
+     * @return    the username from (@code userIcon) WebElement
      */
-    public boolean userIsAutorized(){
-        String userName = userIcon.getAttribute("innerHTML");
-        return User.getName().equals(userName);
+    public String getUserIconInnerText(){
+        return userIcon.getAttribute("innerHTML");
+    }
+
+    public WebElement getUserIcon(){
+        return userIcon;
     }
 }

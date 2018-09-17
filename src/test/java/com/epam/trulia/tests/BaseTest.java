@@ -5,7 +5,6 @@ import com.epam.trulia.driverManager.DriverType;
 import com.epam.trulia.pages.HomePage;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -19,7 +18,7 @@ public class BaseTest {
     protected HomePage homePage;
 
     private final String TESTED_RESOURCE = "https://www.trulia.com/";
-    private final long IMPLICITY_WAIT = 10;
+    private final long WAITING_TIME = 10;
     private final int WIDTH = 1650;
     private final int HEIGHT = 700;
 
@@ -32,7 +31,7 @@ public class BaseTest {
     protected void setUp() {
         startBrowser();
         driver.get(TESTED_RESOURCE);
-        homePage = PageFactory.initElements(driver, HomePage.class);
+        homePage = new HomePage(driver);
     }
 
     /**
@@ -42,8 +41,9 @@ public class BaseTest {
      */
     private void startBrowser() {
         getDriverInstance();
-        driver = DriverManager.getDriver(DriverType.Firefox);
-        driver.manage().timeouts().implicitlyWait(IMPLICITY_WAIT, TimeUnit.SECONDS);
+        driver = DriverManager.getDriver(DriverType.FIREFOX);
+        driver.manage().timeouts().implicitlyWait(WAITING_TIME, TimeUnit.SECONDS);
+        driver.manage().timeouts().setScriptTimeout(WAITING_TIME, TimeUnit.SECONDS);
         driver.manage().window().setSize(new Dimension(WIDTH, HEIGHT));
     }
 
