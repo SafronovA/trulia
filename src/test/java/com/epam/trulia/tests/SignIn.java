@@ -6,7 +6,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SignIn extends BaseTest{
-    private User user;
     private SignInStep signInStep;
 
     /**
@@ -15,11 +14,10 @@ public class SignIn extends BaseTest{
      */
     @Test
     public void signInTest(){
-        user = new User();
         signInStep = new SignInStep(driver);
-        signInStep.signIn(user.getLogin(), user.getPassword());
+        signInStep.signIn();
 
-        Assert.assertEquals(signInStep.getUserIconInnerText(), user.getName(), "signIn test passed");
+        Assert.assertEquals(signInStep.getUserIconInnerText(), signInStep.getUserName(), "signIn test passed");
     }
 
 }
