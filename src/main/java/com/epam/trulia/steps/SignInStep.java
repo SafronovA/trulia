@@ -23,7 +23,6 @@ public class SignInStep {
         homePage.clickSubmitButton();
         homePage.setPassword(password);
         homePage.clickSubmitButton();
-//        return homePage;
     }
 
     public String getUserIconInnerText(){

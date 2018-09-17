@@ -1,11 +1,7 @@
 package com.epam.trulia.tests;
 
-import com.epam.trulia.user.User;
 import com.epam.trulia.steps.SignInStep;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.epam.trulia.user.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
