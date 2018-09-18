@@ -19,7 +19,7 @@ public class HomePage {
     private WebElement loginInput;
     @FindBy(xpath = "//input[@data-role='login_password_field']")
     private WebElement passwordInput;
-    @FindBy(xpath = "//span[@class=\'typeTruncate nakedEmail menu-personalized__userEmail___RajK\']")
+    @FindBy(xpath = "//span[@class='typeTruncate nakedEmail menu-personalized__userEmail___RajK']")
     private WebElement userIcon;
 
     /**
@@ -67,7 +67,6 @@ public class HomePage {
     /**
      * @return    the username from (@code userIcon) WebElement
      */
-
     public WebElement getUserIcon(){
         return userIcon;
     }

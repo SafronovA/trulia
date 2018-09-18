@@ -1,12 +1,13 @@
 package com.epam.trulia.tests;
 
-import com.epam.trulia.steps.SignInStep;
+import com.epam.trulia.steps.HomePageStep;
 import com.epam.trulia.user.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SignIn extends BaseTest{
-    private SignInStep signInStep;
+    private HomePageStep homePageStep;
+    private User user = new User();
 
     /**
      * Performs authorization on the tested resource
@@ -14,10 +15,10 @@ public class SignIn extends BaseTest{
      */
     @Test
     public void signInTest(){
-        signInStep = new SignInStep(driver);
-        signInStep.signIn();
+        homePageStep = new HomePageStep(driver);
+        homePageStep.signIn(user.getLogin(), user.getPassword());
 
-        Assert.assertEquals(signInStep.getUserIconInnerText(), signInStep.getUserName(), "signIn test passed");
+        Assert.assertEquals(homePageStep.getUserNameFromIcon(), user.getName(), "signIn test passed");
     }
 
 }
