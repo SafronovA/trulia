@@ -18,7 +18,7 @@ public class SignIn extends BaseTest{
         homePageStep = new HomePageStep(driver);
         homePageStep.signIn(user.getLogin(), user.getPassword());
 
-        Assert.assertEquals(homePageStep.getUserNameFromIcon(), user.getName(), "signIn test passed");
+        Assert.assertEquals(homePageStep.getUserNameFromUserIcon(), user.getName(), "signIn test passed");
     }
 
 }

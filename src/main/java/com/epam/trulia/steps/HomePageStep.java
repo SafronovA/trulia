@@ -18,18 +18,19 @@ public class HomePageStep {
      * @return    this HomePage with authorized user
      */
     public void signIn(String login, String password){
-        homePage.clickSignInButton();
-        homePage.setLogin(login);
-        homePage.clickSubmitButton();
-        homePage.setPassword(password);
-        homePage.clickSubmitButton();
+        homePage.clickSignInButton()
+                .setLogin(login)
+                .clickSubmitButton()
+                .setPassword(password)
+                .clickSubmitButton();
     }
 
     /**
-     * @return innerHTML from user icon
+     * @return return the result of (@code homePage.getUserNameFromUserIcon()) method
      */
-    public String getUserNameFromIcon(){
-       return homePage.getUserIcon().getAttribute("innerHTML");
+    public String getUserNameFromUserIcon(){
+        String userName = homePage.getUserNameFromUserIcon();
+        return userName;
     }
 
 }

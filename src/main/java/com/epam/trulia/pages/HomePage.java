@@ -67,7 +67,8 @@ public class HomePage {
     /**
      * @return    the username from (@code userIcon) WebElement
      */
-    public WebElement getUserIcon(){
-        return userIcon;
+    public String getUserNameFromUserIcon() {
+        String userName = userIcon.getAttribute("innerHTML");
+        return userName;
     }
 }
